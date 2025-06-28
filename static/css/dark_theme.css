@@ -1,0 +1,95 @@
+/* MahsaShelf Dark Theme CSS */
+
+body.dark-theme {
+  background: #191627;
+  color: #ececec;
+}
+body.dark-theme h1 {
+  background: rgba(41, 20, 80, 0.93);
+  color: #f1e5ff;
+}
+body.dark-theme .shelf {
+  background-color: #241a31 !important;
+}
+body.dark-theme .sidebar-header {
+  background: #4e3375;
+}
+body.dark-theme .modal-content {
+  background: #23213a;
+  color: #fff;
+}
+body.dark-theme .sidebar-footer button.active {
+  background: #8c78c7;
+  color: #fff;
+}
+body.dark-theme .sidebar-list h3 {
+  color: #bba2e6;
+}
+body.dark-theme .shelf-categories li:hover {
+  background: #40325a;
+  color: #fff;
+}
+body.dark-theme .fav-btn.active {
+  color: #f06292;
+}
+/* کتاب و صفحات */
+body.dark-theme .book {
+  box-shadow: 0 5px 16px #18182a66;
+} 
+body.dark-theme .page.first,
+body.dark-theme .page.second,
+body.dark-theme .page.third,
+body.dark-theme .page.last {
+  background: linear-gradient(
+    110deg,
+    #2d2745 0%,
+    #3a2c63 50%,
+    #181a2b 100%
+  );
+} 
+
+body.dark-theme .btn-tale {
+  background: #373056;
+  color: #fff;
+}
+
+/* حالت شب برای مودال */
+body.dark-theme .modal-content {
+  background: #23213a;
+  color: #fff;
+  border-color: #473268;
+  box-shadow: 0 10px 48px #241a31cc, 0 1px 0 #8c78c766 inset;
+}
+body.dark-theme .close {
+  color: #bba2e6;
+}
+body.dark-theme .close:hover {
+  color: #e8e5ea;
+}
+body.dark-theme .modal-buttons button {
+  background: #8c78c7;
+  color: #fff;
+}
+body.dark-theme .modal-buttons button:hover {
+  background: #45217a;
+}
+/* حالت شب برای مودال */
+body.dark-theme .modal-content {
+  background: #23213a;
+  color: #fff;
+  border-color: #473268;
+  box-shadow: 0 10px 48px #241a31cc, 0 1px 0 #8c78c766 inset;
+}
+body.dark-theme .close {
+  color: #bba2e6;
+}
+body.dark-theme .close:hover {
+  color: #e8e5ea;
+}
+body.dark-theme .modal-buttons button {
+  background: #8c78c7;
+  color: #fff;
+}
+body.dark-theme .modal-buttons button:hover {
+  background: #45217a;
+}

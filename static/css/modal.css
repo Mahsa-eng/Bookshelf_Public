@@ -1,0 +1,314 @@
+    /* SVG Filter for liquid distortion effect */
+.liquid-glass-svg-filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+/* Main closeBtn_container for liquid glass effect */
+.modal {
+  /* Outer shadow for depth */
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  display: none;
+  position: fixed;
+  z-index: 999; 
+  overflow: hidden;
+  left: 0;
+  top: 0; 
+  width: 100vw;
+  height: 100vh; 
+}
+
+/* Layer 1: Distortion and blur base */
+.modal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1; /*
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px); */
+  -webkit-filter: url(#glass-warp-filter);
+  -moz-filter: url(#glass-warp-filter);
+  filter: url(#glass-warp-filter);
+  overflow: hidden;
+
+}
+/* Layer 2: Semi-transparent overlay */
+.modal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: rgba(43, 2, 78, 0.1);
+  pointer-events: none;
+} 
+
+/* Layer 3: Inner shadows for shine effect */
+.modal-content {
+  box-shadow: 
+  /* Outer shadows */
+    0 6px 6px rgba(0, 0, 0, 0.2), 
+    0 0 20px rgba(0, 0, 0, 0.1),
+    /* Inner shadows for glass shine */
+    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);  
+  overflow: hidden;
+  width: 95%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin: 40px auto;
+  padding: 20px 25px;
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px) contrast(85%); 
+  
+}
+
+/* Layer 4: Content (text, icons, etc.) */
+.modal > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Liquid Glass closeBtn */
+.modal-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.modal-buttons button {
+    /* More transparent for closeBtn */
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(1px) saturate(1.2);
+    backdrop-filter: blur(1px) saturate(1.2);
+    
+    border: 0.5px solid rgba(255, 255, 255, 0.5);
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    padding: 6px 14px;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    
+    /* closeBtn droplet shadow */
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.04),
+        0 2px 6px rgba(0, 0, 0, 0.02),
+        inset 0 0.5px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -0.5px 0 rgba(255, 255, 255, 0.2);
+    
+    -webkit-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    -moz-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    -ms-transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.modal-buttons button:hover {
+    -webkit-transform: translateY(-1px) scale(1.02);
+    -moz-transform: translateY(-1px) scale(1.02);
+    -ms-transform: translateY(-1px) scale(1.02);
+    transform: translateY(-1px) scale(1.02);
+    background: rgba(255, 255, 255, 0.12);
+    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+    backdrop-filter: blur(12px) saturate(1.3);
+    
+    box-shadow: 
+        0 6px 18px rgba(0, 0, 0, 0.06),
+        0 3px 8px rgba(0, 0, 0, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+}
+/* closeBtn surface highlight */
+.modal-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    background: -moz-linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    background: -ms-linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+    -webkit-border-radius: 16px 16px 0 0;
+    -moz-border-radius: 16px 16px 0 0;
+    border-radius: 16px 16px 0 0;
+    pointer-events: none;
+}
+
+
+/*
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(228, 214, 243, 0.13); 
+  backdrop-filter: blur(25px);
+
+}
+
+.modal-content {
+  background: linear-gradient(
+    -75deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.05)
+  );  
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+  -webkit-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 95%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin: 40px auto;
+  padding: 20px 25px;
+
+} */
+.modal-content .close {
+  color: rgb(248, 112, 112);
+  font-size: 35px;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+  height: 8px;
+
+}
+.modal-content .close:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px;
+  
+}
+
+.fav-btn {
+  font-size: 1.8rem;
+  color: white;          /* خاکستریِ کم‌رنگ پیش‌فرض */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* وقتی کاربر قلب را فعال می‌کند کلاس "active" می‌گیرد */
+.fav-btn.active {
+  color: #e91e63;         /* صورتی / قلب پر */
+  transform:scale(1.05em);
+  transition: ease-in-out;
+}
+
+.cover-thumb {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+/* فرم کناری عکس */
+.details-box {
+  display: flex;
+  gap: 1rem;
+  padding-top: 0px;
+  padding-right: 20px;
+}
+
+.details-box form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.details-box label {
+  font-weight: 600;
+}
+
+.details-box input,
+.details-box textarea,
+.details-box select {
+  width: 100%;
+  padding: 6px 8px;
+  font-family: inherit;
+  resize: vertical;
+   border: none;
+ border-radius: 5px;
+   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);    
+  background-color: rgba(255, 255, 255, 0.6);
+     box-shadow: 0 2px 10px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 20%);
+}
+
+
+/*
+.modal-closeBtns closeBtn {
+  top: 50%;
+  left: 50%;
+  padding: 10px 20px;
+  color: black;
+  font-size: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(120%);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 40px;
+  border-radius: 30px;
+
+}
+
+.modal-closeBtns closeBtn:hover {
+  transform: translateY(2px);
+}
+*/
+/* From Uiverse.io by Yaseen549  
+.editInput {
+ border: none;
+ border-radius: 15px;
+   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);    
+  background-image: linear-gradient(45deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15)); 
+     box-shadow: 0 2px 10px rgb(0 0 0 / 10%), 0 10px 15px rgb(0 0 0 / 20%);
+}
+
+.editInput:focus {
+ outline-color: white;
+
+}
+
+select {
+    border: 1px solid #fff;
+    backdrop-filter: blur(5px);
+
+}
+select option {
+    backdrop-filter: blur(5px);
+    background-color: transparent;
+}*/

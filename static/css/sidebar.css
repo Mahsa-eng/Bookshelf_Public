@@ -1,0 +1,113 @@
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px; /* منو در ابتدا بیرون صفحه */
+  width: 300px;
+  height: 100vh;
+  backdrop-filter: blur(35px);
+    box-shadow: 
+  /* Outer shadows */
+    0 6px 6px rgba(0, 0, 0, 0.2), 
+    0 0 20px rgba(0, 0, 0, 0.1),
+    /* Inner shadows for glass shine */
+    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);  
+  overflow: hidden;
+  /*background: #f7f0f8;
+  box-shadow: 2px 0 18px rgba(0,0,0,0.15); */
+  z-index: 2000;
+  transition: left 0.4s cubic-bezier(.58,.16,.52,.99);
+  display: flex;
+  flex-direction: column;
+  background-image: radial-gradient(circle, rgb(219, 186, 237), whitesmoke);
+}
+#sidebar.open {
+  left: 0;
+}
+.sidebar-header {
+  height: 140px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 20px;
+  border-radius: 0 0 40px 0;
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&q=60');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.sidebar-header img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+}
+.sidebar-list {
+  flex: 1;
+  padding: 0 0 0 0;
+  margin: 2rem 0 0 0;
+}
+.sidebar-list h3 {
+  margin: 0 0 0.7rem 1.7rem;
+  font-size: 1.25rem;
+  color: #453256;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+
+.shelf-categories {
+  list-style: none;
+  padding: 0 1.3rem;
+  margin: 0;
+}
+.shelf-categories li {
+  padding: 0.6rem 0.5rem 0.6rem 0.5rem;
+  margin-bottom: 0.2rem;
+  cursor: pointer;
+  font-size: 1.05rem;
+  border-radius: 8px;
+  color: black;
+  transition: background 0.2s;
+}
+.shelf-categories li:hover {
+  background: #f1d8fc;
+}
+
+.sidebar-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0.7rem 1.2rem 0.7rem;
+  background: none;
+}
+.sidebar-footer button {
+  border: none;
+  background: none;
+  color: black;
+  font-size: 1.3rem;
+  padding: 0.7rem;
+  border-radius: 10px;
+  transition: background 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar-footer button:hover {
+  font-weight: bolder;
+}
+
+#addBookForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 2% 2% 2%;
+}
+#Add_new_book {
+  margin-bottom: 0;
+} 
+
+
